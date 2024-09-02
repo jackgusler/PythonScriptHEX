@@ -20,6 +20,7 @@ block_height = 150  # Distance between the start of each block vertically
 
 # Extract and print the hex values
 hex_colors = []
+rgb_colors = []
 for row in range(rows):
     for col in range(columns):
         # Calculate the center of the block
@@ -34,9 +35,15 @@ for row in range(rows):
         # Convert RGB to HEX
         hex_color = webcolors.rgb_to_hex(color[:3])
         hex_colors.append(hex_color)
+        rgb_colors.append(color[:3])
         print(f'RGB: {color[:3]}, HEX: {hex_color}')
 
 # Optionally save the hex colors to a file
-with open('extracted_hex_colors.txt', 'w') as file:
+with open('extracted_hex_colors.txt', 'w') as hex_file:
     for hex_color in hex_colors:
-        file.write(f'{hex_color}\n')
+        hex_file.write(f'{hex_color}\n')
+
+# Save the RGB colors to a file
+with open('extracted_rgb_colors.txt', 'w') as rgb_file:
+    for rgb_color in rgb_colors:
+        rgb_file.write(f'{rgb_color}\n')
